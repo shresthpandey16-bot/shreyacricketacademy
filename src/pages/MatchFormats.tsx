@@ -230,7 +230,7 @@ const MatchFormats = () => {
                 </p>
                 <ul className="space-y-2 ml-4 text-lg">
                   <li>• <strong>Batting:</strong> Boundaries chahiye har over mein!</li>
-                  <li>• <strong>Strike rate > Average:</strong> 150+ strike rate = good!</li>
+                  <li>• <strong>Strike rate &gt; Average:</strong> 150+ strike rate = good!</li>
                   <li>• <strong>Bowling:</strong> Yorkers, slower balls, variations!</li>
                   <li>• <strong>Fielding:</strong> Athletic fielders - diving catches, direct hits!</li>
                   <li>• <strong>Death overs:</strong> 16-20 overs = match deciding!</li>
