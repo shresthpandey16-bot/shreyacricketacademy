@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { BookOpen, Target, Award, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const modules = [
   {
@@ -9,6 +10,7 @@ const modules = [
     description: "What is cricket? Learn the fundamentals — equipment, pitch, teams, and how the game works.",
     topics: ["11 players per team", "Bat, ball & stumps", "Innings & overs", "Runs & wickets"],
     color: "primary" as const,
+    link: "/cricket-basics",
   },
   {
     icon: <Target className="w-8 h-8" />,
@@ -17,6 +19,7 @@ const modules = [
     description: "How runs are scored, different ways to get out, and what makes cricket unique.",
     topics: ["1, 2, 3, 4 & 6 runs", "Boundaries explained", "LBW, caught, bowled", "No ball & wide"],
     color: "secondary" as const,
+    link: "/scoring-rules",
   },
   {
     icon: <Zap className="w-8 h-8" />,
@@ -25,6 +28,7 @@ const modules = [
     description: "Test, ODI, and T20 — understand how each format brings a different flavor of excitement!",
     topics: ["Test: 5 days of strategy", "ODI: 50 overs thrill", "T20: Fast & furious", "IPL & World Cup"],
     color: "accent" as const,
+    link: "/match-formats",
   },
   {
     icon: <Award className="w-8 h-8" />,
@@ -33,6 +37,7 @@ const modules = [
     description: "Every player has a role — learn about batting order, bowling types, and field positions.",
     topics: ["Opener & middle order", "Fast & spin bowlers", "Wicket-keeper role", "30+ field positions"],
     color: "golden" as const,
+    link: "/positions-fielding",
   },
 ];
 
@@ -73,29 +78,30 @@ const LearnCricket = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {modules.map((mod, i) => (
-            <motion.div
-              key={mod.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className={`relative rounded-2xl border bg-gradient-to-b ${colorMap[mod.color]} p-6 cursor-pointer transition-all duration-300`}
-            >
-              <div className={`text-4xl mb-4`}>{mod.emoji}</div>
-              <h3 className={`font-display font-bold text-xl mb-2 ${textColorMap[mod.color]}`}>
-                {mod.title}
-              </h3>
-              <p className="text-muted-foreground text-sm mb-4">{mod.description}</p>
-              <ul className="space-y-1.5">
-                {mod.topics.map((topic) => (
-                  <li key={topic} className="text-sm text-foreground/80 flex items-center gap-2">
-                    <span className={`w-1.5 h-1.5 rounded-full bg-${mod.color}`} style={{ backgroundColor: `hsl(var(--${mod.color}))` }} />
-                    {topic}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            <Link key={mod.title} to={mod.link}>
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className={`relative rounded-2xl border bg-gradient-to-b ${colorMap[mod.color]} p-6 cursor-pointer transition-all duration-300`}
+              >
+                <div className={`text-4xl mb-4`}>{mod.emoji}</div>
+                <h3 className={`font-display font-bold text-xl mb-2 ${textColorMap[mod.color]}`}>
+                  {mod.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4">{mod.description}</p>
+                <ul className="space-y-1.5">
+                  {mod.topics.map((topic) => (
+                    <li key={topic} className="text-sm text-foreground/80 flex items-center gap-2">
+                      <span className={`w-1.5 h-1.5 rounded-full bg-${mod.color}`} style={{ backgroundColor: `hsl(var(--${mod.color}))` }} />
+                      {topic}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
