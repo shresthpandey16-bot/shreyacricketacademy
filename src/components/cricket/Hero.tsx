@@ -126,17 +126,6 @@ const Hero = () => {
         >
           🚀 START YOUR CRICKET JOURNEY
         </motion.a>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 10, 0] }}
-          transition={{ delay: 2, y: { duration: 2, repeat: Infinity } }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground text-sm flex flex-col items-center gap-2"
-        >
-          <span>Scroll Down</span>
-          <span>↓</span>
-        </motion.div>
       </div>
     </section>
   );
